@@ -21,6 +21,9 @@ const config = {
 				fs: {
 					strict: false
 				}
+			},
+			worker: {
+				format: 'es' //  default is 'iife' // https://vitejs.dev/config/#worker-format
 			}
 		}
 	}
