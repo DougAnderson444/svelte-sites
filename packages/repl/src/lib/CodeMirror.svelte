@@ -90,7 +90,9 @@
 		},
 		md: {
 			name: 'markdown'
-		}
+		},
+		svx: {
+			name: 'gfm'
 	};
 
 	const refs = {};
