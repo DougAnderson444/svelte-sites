@@ -1,7 +1,9 @@
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
-import './theme.css';
+// import './theme.css';
+import './vibrantink.css'; //alternate theme
 
+import 'codemirror/mode/gfm/gfm.js'; // github flavored markdown
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/mode/handlebars/handlebars.js';
 import 'codemirror/mode/htmlmixed/htmlmixed.js';
