@@ -23,7 +23,7 @@
 	}
 
 	function closeEdit() {
-		const match = /(.+)\.(svelte|js|json|md)$/.exec($selected.name);
+		const match = /(.+)\.(svelte|js|json|md|svx)$/.exec($selected.name);
 		$selected.name = match ? match[1] : $selected.name;
 		if (isComponentNameUsed($selected)) {
 			let i = 1;
@@ -151,7 +151,7 @@
 					<i class="drag-handle" />
 					{#if component.name === 'App' && component !== editing}
 						<div class="uneditable">
-							App.svelte{#if show_modified && component.modified}*{/if}
+							App.{component.type}{#if show_modified && component.modified}*{/if}
 						</div>
 					{:else if component === editing}
 						<span class="input-sizer"
