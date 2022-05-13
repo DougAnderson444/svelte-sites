@@ -93,6 +93,7 @@
 		},
 		svx: {
 			name: 'gfm'
+		}
 	};
 
 	const refs = {};
