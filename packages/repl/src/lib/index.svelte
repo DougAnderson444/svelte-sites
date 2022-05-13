@@ -18,7 +18,7 @@
 	export let fixedPos = 50;
 	export let injectedJS = '';
 	export let injectedCSS = '';
-	export let theme = 'svelte';
+	export let theme = 'ayu-dark';
 	export let showModified = false;
 	export let showAst = false;
 
