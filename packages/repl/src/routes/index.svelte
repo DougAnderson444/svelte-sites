@@ -1,8 +1,8 @@
 <script>
 	import Repl from '@sveltejs/repl';
 	import { onMount } from 'svelte';
-	import '@sveltejs/site-kit/base.css';
-	import '@sveltejs/site-kit/code.css';
+	// import '@sveltejs/site-kit/base.css';
+	// import '@sveltejs/site-kit/code.css';
 
 	let repl;
 
