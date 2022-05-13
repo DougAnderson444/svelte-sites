@@ -4,6 +4,7 @@ import commonjs from './plugins/commonjs.js';
 import glsl from './plugins/glsl.js';
 import json from './plugins/json.js';
 import replace from './plugins/replace.js';
+import { mdsvex } from 'https://cdn.jsdelivr.net/npm/mdsvex/dist/browser-es.js';
 
 self.window = self; // egregious hack to get magic-string to work in a worker
 
@@ -188,14 +189,19 @@ async function get_bundle(uid, mode, cache, lookup) {
 			const res = await fetch_if_uncached(resolved, uid);
 			return res.body;
 		},
-		transform(code, id) {
+		async transform(code, id) {
 			if (uid !== current_id) throw ABORT;
 
 			self.postMessage({ type: 'status', uid, message: `bundling ${id}` });
 
-			if (!/\.svelte$/.test(id)) return null;
+			if (!/\.svelte$|\.svx$/.test(id)) return null;
 
 			const name = id.split('/').pop().split('.')[0];
+
+			// if it's MDSVex, update the code variable to the processed version
+			if (/\.svx$/.test(id)) {
+				({ code } = await mdsvex().markup({ content: code, filename: id }));
+			}
 
 			const result =
 				cache[id] && cache[id].code === code
@@ -233,7 +239,7 @@ async function get_bundle(uid, mode, cache, lookup) {
 
 	try {
 		bundle = await rollup.rollup({
-			input: './App.svelte',
+			input: './App.svx',
 			plugins: [
 				repl_plugin,
 				commonjs,
