@@ -1,12 +1,22 @@
+## Fork Changelog from the standard Svelte REPL:
+
+- added mdsvex
+- added .svx extension for MDSVex files
+- added ayu-dark css theme
+- build the workers as es modules (vite default is iife)
+- tweaked the file extension types
+- emit 'bundled' event from `src/lib/index.svelte` with compiled/bundled code for consumption by another component
+- added github format markdown (gfm) for .svx and css file for codemirror
+
 # @sveltejs/svelte-repl
 
 This is the guts of https://svelte.dev/repl, extracted into its own package so that it can be used elsewhere.
 
 ## TODO
 
-* Documentation
-* Tests
-* Themeability
+- Documentation
+- Tests
+- Themeability
 
 ## License
 
