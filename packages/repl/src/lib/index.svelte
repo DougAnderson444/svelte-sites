@@ -110,9 +110,9 @@
 	async function rebundle() {
 		const token = (current_token = {});
 		const result = await bundler.bundle($components);
-		/* See workers/bundler.js line 327	*/
-		if (!result.error) dispatch('bundle', result.es.code);
 		if (result && token === current_token) bundle.set(result);
+		/* See workers/bundler.js line 327	*/
+		if (!result.error) dispatch('compiled', { components: $components, compiled: result.es.code });
 	}
 
 	// TODO this is a horrible kludge, written in a panic. fix it
