@@ -302,6 +302,15 @@ async function bundle({ uid, components }) {
 			})
 		).output[0];
 
+		const es_result = (
+			await dom.bundle.generate({
+				format: 'es',
+				name: 'SvelteComponent',
+				exports: 'named',
+				sourcemap: true
+			})
+		).output[0];
+
 		const ssr = false // TODO how can we do SSR?
 			? await get_bundle(uid, 'ssr', cached.ssr, lookup)
 			: null;
@@ -327,6 +336,7 @@ async function bundle({ uid, components }) {
 		return {
 			uid,
 			dom: dom_result,
+			es: es_result,
 			ssr: ssr_result,
 			imports: dom.imports,
 			warnings: dom.warnings,
