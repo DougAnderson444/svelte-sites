@@ -53,6 +53,12 @@
 		<Checkbox bind:checked={$compile_options.legacy} />
 		<span class="boolean">{$compile_options.legacy}</span>
 	</label>
+
+	<label class="option">
+		<span class="key">accessors:</span>
+		<Checkbox bind:checked={$compile_options.accessors} />
+		<span class="boolean">{$compile_options.accessors}</span>
+	</label>
 	});
 </div>
 
