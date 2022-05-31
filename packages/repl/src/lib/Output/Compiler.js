@@ -40,7 +40,7 @@ export default class Compiler {
 				options: Object.assign(
 					{
 						name: component.name,
-						filename: `${component.name}.${component.type}`
+						filename: `${component.name}.${component.type}` // used to be .svelte
 					},
 					options
 				),
