@@ -8,6 +8,7 @@
 - emit 'compiled' event from `src/lib/index.svelte` with compiled/bundled code for consumption by another component
 - also emit components from <Repl on:compiled={(e)=> ({compiled, components} = e.detail)} />
 - added github format markdown (gfm) for .svx and css file for codemirror
+- set svelte.compile options to {accessors: true} so parent comp can grab schema
 
 # @sveltejs/svelte-repl
 

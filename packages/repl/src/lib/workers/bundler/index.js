@@ -217,7 +217,8 @@ async function get_bundle(uid, mode, cache, lookup) {
 								},
 								has_loopGuardTimeout_feature() && {
 									loopGuardTimeout: 100
-								}
+								},
+								{ accessors: true }
 							)
 					  );
 
