@@ -8,6 +8,7 @@
 	import Output from './Output/index.svelte';
 	import Bundler from './Bundler.js';
 	import { is_browser } from './env.js';
+	import { minify } from 'terser';
 
 	export let packagesUrl = 'https://unpkg.com';
 	export let svelteUrl = `${packagesUrl}/svelte`;
@@ -112,7 +113,10 @@
 		const result = await bundler.bundle($components);
 		if (result && token === current_token) bundle.set(result);
 		/* See workers/bundler.js line 327	*/
-		if (!result.error) dispatch('compiled', { components: $components, compiled: result.es.code });
+		if (!result.error) {
+			const minified = (await minify(result.es.code)).code;
+			dispatch('compiled', { components: $components, compiled: minified });
+		}
 	}
 
 	// TODO this is a horrible kludge, written in a panic. fix it
