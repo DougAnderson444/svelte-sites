@@ -1,12 +1,12 @@
 {
 	"name": "@sveltejs/site-kit",
-	"version": "2.1.0",
+	"version": "2.1.2",
 	"description": "Styles and components for use in *.svelte.dev websites",
 	"type": "module",
 	"svelte": "index.js",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"package": "svelte-kit package",
+		"package": "svelte-package",
 		"release": "npm run package && cd package && npm publish"
 	},
 	"repository": {
@@ -20,10 +20,12 @@
 	},
 	"homepage": "https://github.com/sveltejs/site-kit#readme",
 	"devDependencies": {
-		"@sveltejs/kit": "next",
+		"@sveltejs/kit": "^1.0.0-next.455",
+		"@sveltejs/package": "1.0.0-next.3",
 		"svelte": "^3.46.3",
 		"svelte2tsx": "^0.4.14",
-		"typescript": "^4.5.5"
+		"typescript": "^4.5.5",
+		"vite": "^3.1.0-beta.1"
 	},
 	"dependencies": {
 		"golden-fleece": "^1.0.9"

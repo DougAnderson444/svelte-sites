@@ -1,16 +1,17 @@
 <script>
 	import Image from './Image.svelte';
-	import Machine from '$img/svelte-machine.png?w=640;1280;2560;3840&format=avif;webp;png&meta';
+	import Machine from './svelte-machine.png?w=640;1280;2560;3840&format=avif;webp;png&picture';
+	import SvelteLogotype from './svelte-logotype.svg';
 </script>
 
 <div class="hero">
 	<strong>Cybernetically enhanced web apps</strong>
 	<Image
-		data={Machine}
+		src={Machine}
 		alt="The Svelte compiler packaging up your component code"
 		--max-height="65vh"
 	/>
-	<img alt="Svelte logotype" class="logotype" src="/svelte-logotype.svg" />
+	<img alt="Svelte logotype" class="logotype" src={SvelteLogotype} />
 </div>
 
 <style>
