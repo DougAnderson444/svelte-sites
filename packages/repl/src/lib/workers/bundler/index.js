@@ -308,7 +308,7 @@ async function bundle({ uid, components }) {
 				format: 'es',
 				name: 'SvelteComponent',
 				exports: 'named',
-				sourcemap: true
+				sourcemap: false
 			})
 		).output[0];
 
