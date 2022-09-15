@@ -76,14 +76,14 @@
 
 <div class="view-toggle">
 	{#if selected_type === 'md'}
-		<button class="active">Markdown</button>
+		<!-- <button class="active">Markdown</button> -->
 	{:else}
-		<button class:active={view === 'result'} on:click={() => (view = 'result')}>Result</button>
+		<!-- <button class:active={view === 'result'} on:click={() => (view = 'result')}>Result</button>
 		<button class:active={view === 'js'} on:click={() => (view = 'js')}>JS output</button>
 		<button class:active={view === 'css'} on:click={() => (view = 'css')}>CSS output</button>
 		{#if showAst}
 			<button class:active={view === 'ast'} on:click={() => (view = 'ast')}>AST output</button>
-		{/if}
+		{/if} -->
 	{/if}
 </div>
 
