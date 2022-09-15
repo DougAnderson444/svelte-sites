@@ -213,7 +213,8 @@ async function get_bundle(uid, mode, cache, lookup) {
 									generate: mode,
 									format: 'esm',
 									dev: true,
-									filename: name + '.svelte'
+									filename: name + '.svelte',
+									enableSourcemap: false
 								},
 								has_loopGuardTimeout_feature() && {
 									loopGuardTimeout: 100
