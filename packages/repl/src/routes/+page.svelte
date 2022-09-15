@@ -19,7 +19,14 @@
 </scr` +
 						`ipt>
 
-<h1>Hello {name}!</h1>`
+<h1>Hello {name}!</h1>
+
+<sty` +
+						`le>
+	h1 { color: red;}
+</sty` +
+						`le>
+`
 				}
 			]
 		});
