@@ -6,7 +6,7 @@
 	"svelte": "index.js",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"package": "svelte-package",
+		"package": "svelte-kit package",
 		"release": "npm run package && cd package && npm publish"
 	},
 	"repository": {
