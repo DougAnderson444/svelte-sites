@@ -1,4 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import path from 'path';
 
 const config = {
 	plugins: [sveltekit()],
@@ -17,3 +18,5 @@ const config = {
 		format: 'es' //  default is 'iife' // https://vitejs.dev/config/#worker-format
 	}
 };
+
+export default config;

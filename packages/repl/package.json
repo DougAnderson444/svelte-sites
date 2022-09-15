@@ -1,15 +1,15 @@
 {
-	"name": "@sveltejs/repl",
-	"version": "0.0.2",
+	"name": "@douganderson444/sveltejs-repl",
+	"version": "0.0.3",
 	"type": "module",
 	"svelte": "index.js",
 	"module": "dist/index.js",
 	"main": "dist/index.js",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
+		"dev": "vite dev",
+		"build": "vite build",
 		"package": "svelte-package",
-		"preview": "svelte-kit preview",
+		"preview": "vite preview",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
 	},
