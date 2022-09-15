@@ -11,7 +11,7 @@
 			components: [
 				{
 					name: 'App',
-					type: 'svelte',
+					type: 'svx',
 					source:
 						`<scr` +
 						`ipt>
