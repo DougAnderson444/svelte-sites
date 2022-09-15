@@ -31,7 +31,10 @@ const common_options = {
 
 function compile({ id, source, options, return_ast }) {
 	try {
-		const { js, css, ast } = svelte.compile(source, Object.assign({}, common_options, options));
+		const { js, css, ast } = svelte.compile(
+			source,
+			Object.assign({}, common_options, options, { accessors: true })
+		);
 
 		return {
 			id,
