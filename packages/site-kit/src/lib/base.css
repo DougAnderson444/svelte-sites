@@ -47,7 +47,7 @@
 	--heading: #222;
 	--text: #444;
 	--second-text: #7b7766;
-	--sidebar-text: rgba(255, 255, 255, 0.90);
+	--sidebar-text: rgba(255, 255, 255, 0.9);
 	--border-w: 0.3rem; /* border-width  */
 	--border-r: 0.4rem; /* border-radius */
 }
@@ -290,8 +290,8 @@ button > svg,
 .btn > svg {
 	position: relative;
 	top: -0.1rem;
-	width: 2rem !important;
-	height: 2rem !important;
+	width: auto !important;
+	height: 1rem !important;
 	stroke: currentColor !important;
 }
 

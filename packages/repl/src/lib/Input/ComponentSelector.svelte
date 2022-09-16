@@ -135,7 +135,7 @@
 			{#each $components as component, index}
 				<div
 					id={component.name}
-					class="button"
+					class="button-div"
 					role="button"
 					class:active={component === $selected}
 					class:draggable={component !== editing && index !== 0}
@@ -209,7 +209,7 @@
 		height: 10em;
 	}
 
-	.file-tabs .button,
+	.file-tabs .button-div,
 	.file-tabs button {
 		position: relative;
 		display: inline-block;
@@ -224,7 +224,7 @@
 		cursor: pointer;
 	}
 
-	.file-tabs .button.active {
+	.file-tabs .button-div.active {
 		/* color: var(--second); */
 		color: #333;
 		border-bottom: 3px solid var(--prime);
@@ -275,19 +275,19 @@
 		color: var(--flash);
 	}
 
-	.file-tabs .button.active .editable {
+	.file-tabs .button-div.active .editable {
 		cursor: text;
 	}
 
-	.file-tabs .button.active .remove {
+	.file-tabs .button-div.active .remove {
 		display: block;
 	}
 
-	.file-tabs .button.drag-over {
+	.file-tabs .button-div.drag-over {
 		background: #67677814;
 	}
 
-	.file-tabs .button.drag-over {
+	.file-tabs .button-div.drag-over {
 		cursor: move;
 	}
 
@@ -340,5 +340,6 @@
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		fill: none;
+		display: inline-block !important;
 	}
 </style>
