@@ -278,7 +278,7 @@
 
 <svelte:window on:beforeunload={beforeUnload} />
 
-<div class="container" class:toggleable={$toggleable} bind:clientWidth={width}>
+<div class="repl-container" class:toggleable={$toggleable} bind:clientWidth={width}>
 	<div class="viewport" class:output={show_output}>
 		<SplitPane
 			type={orientation === 'rows' ? 'vertical' : 'horizontal'}
@@ -310,21 +310,21 @@
 </div>
 
 <style>
-	.container {
+	.repl-container {
 		position: relative;
 		width: 100%;
 		height: 100%;
 		background: white;
 	}
 
-	.container :global(section) {
+	.repl-container :global(section) {
 		position: relative;
 		padding: 42px 0 0 0;
 		height: 100%;
 		box-sizing: border-box;
 	}
 
-	.container :global(section) > :global(*):first-child {
+	.repl-container :global(section) > :global(*):first-child {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -333,7 +333,7 @@
 		box-sizing: border-box;
 	}
 
-	.container :global(section) > :global(*):last-child {
+	.repl-container :global(section) > :global(*):last-child {
 		width: 100%;
 		height: 100%;
 	}
