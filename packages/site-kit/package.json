@@ -1,6 +1,6 @@
 {
 	"name": "@douganderson444/sveltejs-site-kit",
-	"version": "2.1.4",
+	"version": "2.1.5",
 	"description": "Styles and components for use in *.svelte.dev websites",
 	"type": "module",
 	"svelte": "index.js",
