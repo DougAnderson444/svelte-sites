@@ -1,5 +1,5 @@
 <script>
-	import { onMount, getContext } from 'svelte';
+	import { onMount, getContext, createEventDispatcher } from 'svelte';
 	import getLocationFromStack from './getLocationFromStack.js';
 	import PaneWithPanel from './PaneWithPanel.svelte';
 	import ReplProxy from './ReplProxy.js';
@@ -9,6 +9,7 @@
 	import { browser } from '$app/environment';
 
 	const { bundle } = getContext('REPL');
+	const dispatch = createEventDispatcher();
 
 	export let error; // TODO should this be exposed as a prop?
 	let logs = [];
@@ -38,6 +39,7 @@
 	let prev_height;
 
 	let last_console_event;
+	let serializedSource;
 
 	onMount(() => {
 		proxy = new ReplProxy(iframe, {
@@ -119,6 +121,10 @@
 				});
 			`);
 
+			if (relaxed) {
+				serializedSource = new XMLSerializer().serializeToString(iframe?.contentWindow.document);
+				dispatch('serializedSource', serializedSource);
+			}
 			error = null;
 		} catch (e) {
 			show_error(e);

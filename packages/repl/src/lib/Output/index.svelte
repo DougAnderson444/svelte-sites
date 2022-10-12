@@ -89,7 +89,14 @@
 
 <!-- component viewer -->
 <div class="tab-content" class:visible={selected_type !== 'md' && view === 'result'}>
-	<Viewer bind:error={runtimeError} {status} {relaxed} {injectedJS} {injectedCSS} />
+	<Viewer
+		bind:error={runtimeError}
+		{status}
+		{relaxed}
+		{injectedJS}
+		{injectedCSS}
+		on:serializedSource
+	/>
 </div>
 
 <!-- js output -->
