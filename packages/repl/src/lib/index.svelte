@@ -300,7 +300,6 @@
 					{injectedCSS}
 					{theme}
 					{showAst}
-					on:serializedSource
 				/>
 			</section>
 		</SplitPane>
