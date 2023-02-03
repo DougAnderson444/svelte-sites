@@ -10,6 +10,5 @@
 			"@sveltejs/site-kit/*": ["../../packages/site-kit/src/lib/*"]
 		}
 	},
-	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"],
-	 "extends": "./.svelte-kit/tsconfig.json"
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
 }
