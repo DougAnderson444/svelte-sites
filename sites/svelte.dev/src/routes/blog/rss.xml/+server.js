@@ -1,4 +1,6 @@
-import { API_BASE } from '$lib/env';
+import { get_index } from '$lib/server/markdown';
+
+export const prerender = true;
 
 const months = ',Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(',');
 
@@ -19,6 +21,7 @@ function escapeHTML(html) {
 	return html.replace(/["'&<>]/g, (c) => `&${chars[c]};`);
 }
 
+/** @type {import('$lib/server/markdown/types').BlogPostSummary[]} */
 const get_rss = (posts) =>
 	`
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -41,7 +44,7 @@ const get_rss = (posts) =>
 			<title>${escapeHTML(post.title)}</title>
 			<link>https://svelte.dev/blog/${post.slug}</link>
 			<description>${escapeHTML(post.description)}</description>
-			<pubDate>${formatPubdate(post.date.numeric)}</pubDate>
+			<pubDate>${formatPubdate(post.date)}</pubDate>
 		</item>
 	`
 		)
@@ -55,7 +58,7 @@ const get_rss = (posts) =>
 		.trim();
 
 export async function GET() {
-	const posts = await (await fetch(`${API_BASE}/docs/svelte/blog`)).json();
+	const posts = get_index();
 
 	return new Response(get_rss(posts), {
 		headers: {

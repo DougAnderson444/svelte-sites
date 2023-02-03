@@ -72,7 +72,12 @@
 				<a href="https://2020.stateofjs.com/en-US/technologies/front-end-frameworks/"
 					>most satisfied developers</a
 				>
-				in a pair of industry surveys. We think you'll love it too.
+				drawing the
+				<a
+					href="https://tsh.io/state-of-frontend/#which-of-the-following-frameworks-would-you-like-to-learn-in-the-future"
+					>most interest in learning it</a
+				>
+				in a trio of industry surveys. We think you'll love it too.
 				<a href="/blog/svelte-3-rethinking-reactivity" class="cta"
 					>Read the introductory blog post</a
 				> to learn more.
@@ -81,19 +86,11 @@
 
 		<div slot="how">
 			<pre><code
-					>npm create vite@latest myapp -- <a
-						href="https://github.com/vitejs/vite/tree/main/packages/create-vite/template-svelte"
-						style="user-select: initial;">--template svelte</a
-					>
+					>npm create svelte@latest myapp
 cd myapp
 npm install
 npm run dev
 			</code></pre>
-
-			<p style="flex: 1">
-				Or use <a href="https://kit.svelte.dev">SvelteKit</a>, the official application framework
-				from the Svelte team (currently in beta).
-			</p>
 
 			<a href="/tutorial" class="cta">Learn Svelte</a>
 		</div>
