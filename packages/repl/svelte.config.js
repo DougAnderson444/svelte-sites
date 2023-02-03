@@ -1,8 +1,7 @@
-import path from 'path';
 import adapter from '@sveltejs/adapter-auto';
 
 /** @type {import('@sveltejs/kit').Config} */
-const config = {
+export default {
 	kit: {
 		adapter: adapter()
 	},
@@ -10,5 +9,3 @@ const config = {
 		exports: (file) => file === 'index.js'
 	}
 };
-
-export default config;

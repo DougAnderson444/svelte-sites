@@ -29,7 +29,7 @@ export async function list(user, { offset, search }) {
 /**
  * @param {User} user
  * @param {Pick<Gist, 'name'|'files'>} gist
- * @returns {Gist}
+ * @returns {Promise<Gist>}
  */
 export async function create(user, gist) {
 	const { data, error } = await client.rpc('gist_create', {
@@ -47,7 +47,7 @@ export async function create(user, gist) {
 
 /**
  * @param {string} id
- * @returns {Gist}
+ * @returns {Promise<Gist>}
  */
 export async function read(id) {
 	const { data, error } = await client
@@ -64,7 +64,7 @@ export async function read(id) {
  * @param {User} user
  * @param {string} gistid
  * @param {Pick<Gist, 'name'|'files'>} gist
- * @returns {Gist}
+ * @returns {Promise<Gist>}
  */
 export async function update(user, gistid, gist) {
 	const { data, error } = await client.rpc('gist_update', {
@@ -86,7 +86,7 @@ export async function update(user, gistid, gist) {
  * @param {string[]} ids
  */
 export async function destroy(userid, ids) {
-	const { data, error } = await client.rpc('gist_destroy', {
+	const { error } = await client.rpc('gist_destroy', {
 		gist_ids: ids,
 		gist_userid: userid
 	});

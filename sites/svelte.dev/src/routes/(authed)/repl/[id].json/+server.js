@@ -1,9 +1,11 @@
-import { json } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import * as session from '$lib/db/session';
 import { client } from '$lib/db/client';
 import * as gist from '$lib/db/gist';
-import { API_BASE } from '$lib/env';
+import { PUBLIC_API_BASE } from '$env/static/public';
+
+const UUID_REGEX = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/;
 
 /** @type {Set<string>} */
 let examples;
@@ -16,7 +18,7 @@ function munge(files) {
 			let type = file.name.slice(dot + 1);
 
 			if (type === 'html') type = 'svelte';
-			return { name, type, source: file.source || file.content };
+			return { name, type, source: file.source ?? file.content ?? '' };
 		})
 		.sort((a, b) => {
 			if (a.name === 'App' && a.type === 'svelte') return -1;
@@ -30,7 +32,7 @@ function munge(files) {
 
 export async function GET({ params }) {
 	if (!examples) {
-		const res = await fetch(`${API_BASE}/docs/svelte/examples`);
+		const res = await fetch(`${PUBLIC_API_BASE}/docs/svelte/examples`);
 		examples = new Set(
 			(await res.json())
 				.map((category) => category.examples)
@@ -40,10 +42,13 @@ export async function GET({ params }) {
 	}
 
 	if (examples.has(params.id)) {
-		const res = await fetch(`${API_BASE}/docs/svelte/examples/${params.id}`);
+		const res = await fetch(`${PUBLIC_API_BASE}/docs/svelte/examples/${params.id}`);
 
 		if (!res.ok) {
-			return new Response(await res.json(), { status: res.status });
+			return new Response(await res.json(), {
+				status: res.status,
+				headers: { 'Content-Type': 'application/json' }
+			});
 		}
 
 		const example = await res.json();
@@ -63,10 +68,14 @@ export async function GET({ params }) {
 		return await fetch(`https://svelte.dev/repl/${params.id}.json`);
 	}
 
+	if (!UUID_REGEX.test(params.id)) {
+		throw error(404);
+	}
+
 	const app = await gist.read(params.id);
 
 	if (!app) {
-		return new Response('not found', { status: 404 });
+		throw error(404, 'not found');
 	}
 
 	return json({
@@ -81,7 +90,7 @@ export async function GET({ params }) {
 // TODO reimplement as an action
 export async function PUT({ params, request }) {
 	const user = await session.from_cookie(request.headers.get('cookie'));
-	if (!user) return new Response('Unauthorized', { status: 401 });
+	if (!user) throw error(401, 'Unauthorized');
 
 	const body = await request.json();
 	await gist.update(user, params.id, body);
