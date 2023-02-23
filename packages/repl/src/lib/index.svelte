@@ -314,7 +314,7 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
-		background: white;
+		background: var(--sk-back-1);
 	}
 
 	.repl-container :global(section) {
